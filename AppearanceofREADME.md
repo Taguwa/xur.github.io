@@ -6,8 +6,9 @@
 - ClassName / SplitBlock
 - AccessPermission / private , public
 
-以下Classの全関数と全変数。構造について明記する。実際のコードはSplitBlock.cppにあります。  
-各変数及び関数はもっと良い実装方法があると思うので、逐次変更予定。
+以下Classの全関数と全変数。構造について明記する。
+各変数及び関数はもっと良い実装方法があると思うので、逐次変更予定。  
+詳しい使い方や例は4.に網羅的に書こうと思います。
 
 - [1.変数の説明](#anchor1)
 - [2.関数の説明](#anchor2)
@@ -19,7 +20,7 @@
 ***
 # 1.変数の説明　private:
 変数の説明と主なアクセス方法の説明
-## Pixel data ※未完成
+## Vector2次元配列型 Pixel data;
 実際の画像ファイルのデータをRGBで保存する。
 Pixel構造体は
 ```cpp
@@ -30,10 +31,9 @@ Pixel構造体は
                 };
 ```
 というdouble形の変数r,g,bを持っている。
-このPixel型変数をvectorで2次元配列で表したもの。  アクセス方法の例
-```cpp
-       a.getdata();
-```
+このPixel型変数をvectorで2次元配列で表したもの。  
+Vector型なのでサイズは自由
+
 ## string SplitNumber
 文字列型の変数で、分割画像の位置を保存する。最大で00 ~ FF  
 アクセス方法の例
@@ -121,7 +121,7 @@ return this->~ で戻り値で値を参照できる。
 # 3.コンストラクタ、デストラクタの説明
 実際に実装している所
 ```cpp
-            SplitBlock::SplitBlock(string SplitNumber,Pixel data){
+            SplitBlock::SplitBlock(string SplitNumber,vector<vector<Pixel>> data){
                          this->data = data;
                          this->SplitNumber = SplitNumber;
                          this->up = "-1";
